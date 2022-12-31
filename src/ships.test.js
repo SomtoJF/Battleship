@@ -12,18 +12,6 @@ describe('Test the hit method',()=>{
     beforeAll(()=>{
         return playerCarrier.hit(), playerCarrier.hit(), playerCarrier.hit(), playerCarrier.hit(), playerCarrier.hit();
     });
-    // beforeAll(()=>{
-    //     return playerCarrier.hit();
-    // });
-    // beforeAll(()=>{
-    //     return playerCarrier.hit();
-    // });
-    // beforeAll(()=>{
-    //     return playerCarrier.hit();
-    // });
-    // beforeAll(()=>{
-    //     return playerCarrier.hit();
-    // });
 
     test("Ship's damage count increases on hit", ()=>{
         expect(playerCarrier.damageCount).toEqual(5);
