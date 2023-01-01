@@ -42,8 +42,4 @@ class patrolBoat extends ship{
     };
 };
 
-let playerDestroyer = new destroyer();
-let playerCarrier = new carrier();
-
-console.log(playerDestroyer.isSunk());
-export {playerDestroyer, playerCarrier, battleship, patrolBoat, carrier, destroyer};
+export {battleship, patrolBoat, carrier, destroyer};
