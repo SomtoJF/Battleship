@@ -18,8 +18,8 @@ class gameBoard
     #canBePlaced(x, y, length, isHorizontal)
     {
         const myBoard = this.board;
-        isUnoccupied();
         isLocationValid();
+        isUnoccupied();
 
 
         function isUnoccupied()
@@ -32,8 +32,10 @@ class gameBoard
                         throw new Error('Space is occupied by another ship')
                     };
                 };
-            }
-            else{
+            };
+
+            if(isHorizontal == false)
+            {
                 for(let i = 0; i < length; i++){
                     if(myBoard[x + i][y] != undefined)
                     {
@@ -45,14 +47,20 @@ class gameBoard
         };
 
         function isLocationValid(){
-            if(isHorizontal == true && ((y + length) > 9))
+            if(isHorizontal == true)
             {
-                throw new Error('Ship will overflow the grid')
+                if ((y + length) > 9)
+                {
+                    throw new Error('Ship will overflow the grid')
+                };
             };
             
-            if(isHorizontal == false && ((x + length) > 9))
-            {   
-                throw new Error('Ship will overflow the grid')
+            if(isHorizontal == false)
+            {
+                if ((x + length) > 9)
+                {
+                    throw new Error('Ship will overflow the grid')
+                };
             };
 
             if(x > 9 || y > 9)
@@ -93,9 +101,4 @@ class gameBoard
     };
 };
 
-// let testBoard = new gameBoard();
-// testBoard.place(0,0,{length:5});
-// testBoard.place(0,7,{length:3});
-// testBoard.place(6,7,{length:5}, false)
-// console.log(testBoard.board);
 export default gameBoard;
