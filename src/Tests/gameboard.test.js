@@ -34,7 +34,7 @@ describe('Test performance on placement of ships', ()=>{
 
         expect(()=>{testBoard.place(9,0,new carrier(), false)}).toThrow('Ship will overflow the grid');
 
-        expect(()=>{testBoard.place(9,9,new carrier(), false)}).toThrow('Ship will overflow the grid');
+        expect(()=>{testBoard.place(10,9,new carrier(), false)}).toThrow('location does not exist');
 
         expect(testBoard.board[9][2]).not.toEqual(expect.objectContaining({
             length: 5
