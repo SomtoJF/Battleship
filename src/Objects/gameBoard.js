@@ -47,6 +47,11 @@ class gameBoard
         };
 
         function isLocationValid(){
+            if(x > 9 || y > 9)
+            {
+                throw new Error('location does not exist')
+            };
+            
             if(isHorizontal == true)
             {
                 if ((y + length) > 9)
@@ -62,12 +67,6 @@ class gameBoard
                     throw new Error('Ship will overflow the grid')
                 };
             };
-
-            if(x > 9 || y > 9)
-            {
-                throw new Error('location does not exist')
-            };
-            
         };
     };
 
