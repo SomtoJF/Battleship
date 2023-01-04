@@ -107,4 +107,35 @@ describe('Test recieve Attack functions', ()=>{
             isHit: false
         });
     });
-})
+});
+
+describe('Test if all ships are sunk', ()=>{
+    beforeAll(()=>{
+        return testBoard.place(0, 0, new carrier()),
+        testBoard.place(0, 9, new destroyer(), false)
+    });
+
+    beforeEach(()=>{
+        return testBoard.receiveAttack(0, 0),
+        testBoard.receiveAttack(0, 1),
+        testBoard.receiveAttack(0, 2),
+        testBoard.receiveAttack(0, 3),
+        testBoard.receiveAttack(0, 4),
+        testBoard.receiveAttack(0, 9),
+        testBoard.receiveAttack(1, 9)
+    });
+
+    afterEach(()=>{
+        return testBoard.clear()
+    })
+
+    test('Expect all ships to be sunk', ()=>{
+        expect(()=>{testBoard.receiveAttack(0, 9)}).toThrow('Location Shot before');
+        expect(testBoard.shots).not.toContainObject({
+            x: 2,
+            y: 9,
+            isHit: false
+        });
+        expect(testBoard.allShipsSunk()).toBe(false);
+    });
+});

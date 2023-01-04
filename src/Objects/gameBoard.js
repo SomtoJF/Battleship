@@ -42,18 +42,40 @@ class gameBoard
 
     receiveAttack(x, y)
     {
-        const myBoard = this.board;
-        this.#isShotBefore(x, y);
-        if(myBoard[x][y] != undefined)
-        {
-            myBoard[x][y].hit();
-            this.#recordHit(x, y);
-            return 'Hit';
+        try{
+            const myBoard = this.board;
+            this.#isShotBefore(x, y);
+            if(myBoard[x][y] != undefined)
+            {
+                myBoard[x][y].hit();
+                this.#recordHit(x, y);
+                return 'Hit';
+            }
+            else{
+                this.#recordMiss(x, y);
+                return 'Miss';
+            };
         }
-        else{
-            this.#recordMiss(x, y);
-            return 'Miss';
+        catch(e)
+        {
+            throw new Error(e)
         };
+        
+    };
+
+    allShipsSunk(){
+        const myBoard = this.board;
+        for(let i = 0; i < myBoard.length; i++)
+        {
+            for(let j = 0; j < myBoard[i].length; j++)
+            {
+                if(myBoard[i][j] !== undefined && myBoard[i][j].isSunk() == false)
+                {
+                    return false;
+                };
+            };
+        };
+        return true;
     };
 
     #emptyBoard()
