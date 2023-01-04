@@ -32,7 +32,7 @@ describe('Test performance on placement of ships', ()=>{
 
         expect(()=>{testBoard.place(9,8,new carrier())}).toThrow('Ship will overflow the grid');
 
-        expect(()=>{testBoard.place(9,0,new carrier(), false)}).toThrow('Space is occupied by another ship');
+        expect(()=>{testBoard.place(9,0,new carrier(), false)}).toThrow('Ship will overflow the grid');
 
         expect(()=>{testBoard.place(9,9,new carrier(), false)}).toThrow('Ship will overflow the grid');
 
