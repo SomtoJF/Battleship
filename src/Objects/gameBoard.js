@@ -4,10 +4,10 @@ class gameBoard
 {
     constructor(){
         this.board = this.#emptyBoard();
-        this.shots = [];
+        this.shotsReceived = [];
         this.clear = ()=>{
             this.board = this.#emptyBoard();
-            this.shots = [];
+            this.shotsReceived = [];
         };
     };
 
@@ -144,7 +144,7 @@ class gameBoard
 
     #isShotBefore(x, y)
     {
-        const myShots = this.shots;
+        const myShots = this.shotsReceived;
         for(let i = 0; i < myShots.length; i++){
             if(myShots[i].x == x && myShots[i].y == y)
             {
@@ -155,7 +155,7 @@ class gameBoard
 
     #recordHit(x,y)
     {
-        const myShots = this.shots;
+        const myShots = this.shotsReceived;
         myShots[myShots.length] = {
             x: x,
             y: y,
@@ -165,7 +165,7 @@ class gameBoard
 
     #recordMiss(x,y)
     {
-        const myShots = this.shots;
+        const myShots = this.shotsReceived;
         myShots[myShots.length] = {
             x: x,
             y: y,

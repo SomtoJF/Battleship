@@ -94,14 +94,14 @@ describe('Test recieve Attack functions', ()=>{
     });
 
     test('Shots are being recorded', ()=>{
-        expect(testBoard.shots).toContainObject({
+        expect(testBoard.shotsReceived).toContainObject({
             x: 0,
             y: 1,
             isHit: true
         });
 
         testBoard.receiveAttack(5, 5)
-        expect(testBoard.shots).toContainObject({
+        expect(testBoard.shotsReceived).toContainObject({
             x: 5,
             y: 5,
             isHit: false
@@ -131,7 +131,7 @@ describe('Test if all ships are sunk', ()=>{
 
     test('Expect all ships to be sunk', ()=>{
         expect(()=>{testBoard.receiveAttack(0, 9)}).toThrow('Location Shot before');
-        expect(testBoard.shots).not.toContainObject({
+        expect(testBoard.shotsReceived).not.toContainObject({
             x: 2,
             y: 9,
             isHit: false
