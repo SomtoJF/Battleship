@@ -13,17 +13,21 @@ class computer extends player
     constructor()
     {
         super();
-        this.fire = (gameBoard) => {
-            try{
-                gameBoard.receiveAttack(this.#randomNumber(), this.#randomNumber());
-            }
-            catch(e)
-            {
-                gameBoard.receiveAttack(this.#randomNumber(), this.#randomNumber());
-            };
-        };
     };
 
+    fire (gameBoard){
+        let x = this.#randomNumber();
+        let y = this.#randomNumber();
+        try{
+            gameBoard.receiveAttack(x,y);
+            return [x, y];
+        }
+        catch(e)
+        {
+            gameBoard.receiveAttack(this.#randomNumber(), this.#randomNumber());
+        };
+    };
+    
     #randomNumber()
     {
         let x = Math.floor((Math.random() * 10));
