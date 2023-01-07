@@ -4,8 +4,12 @@ class player {
 	constructor(name) {
 		this.name = name;
 		this.gameBoard = new gameBoard();
-        this.fire = (x, y, gameBoard)=> gameBoard.receiveAttack(x, y);
 	};
+
+    fire(x, y, gameBoard)
+    {
+        gameBoard.receiveAttack(x, y);
+    };
 };
 
 class computer extends player
@@ -24,7 +28,7 @@ class computer extends player
         }
         catch(e)
         {
-            gameBoard.receiveAttack(this.#randomNumber(), this.#randomNumber());
+            this.fire(gameBoard);
         };
     };
     
