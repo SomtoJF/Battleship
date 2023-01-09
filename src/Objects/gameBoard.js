@@ -1,5 +1,3 @@
-import {destroyer, carrier, patrolBoat, battleship} from './ships';
-
 class gameBoard
 {
     constructor(){
