@@ -1,9 +1,16 @@
 import gameBoard from './gameBoard';
+import {destroyer, carrier, patrolBoat, battleship} from './ships';
 
 class player {
-	constructor(name) {
-		this.name = name;
+	constructor() {
+		// this.name = name;
 		this.gameBoard = new gameBoard();
+        this.ships = {
+            Destroyer: new destroyer(),
+            Carrier: new carrier(),
+            PatrolBoat: new patrolBoat(),
+            Battleship: new battleship()
+        };
 	};
 
     fire(x, y, gameBoard)
