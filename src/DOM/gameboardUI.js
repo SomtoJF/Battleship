@@ -6,7 +6,7 @@ function renderGameBoardShips(gameboard, BoardUINodeList)
         {
             if(gameboard[i][j] != undefined)
             {
-                console.log(`${i}, ${j}`);
+                // console.log(`${i}, ${j}`);
                 BoardUINodeList[i][j].appendChild(document.createElement('div'));
             };
         };
