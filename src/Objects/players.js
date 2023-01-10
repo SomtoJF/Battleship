@@ -17,6 +17,35 @@ class player {
     {
         gameBoard.receiveAttack(x, y);
     };
+
+    randomNumber(limit)
+    {
+        let x = Math.floor((Math.random() * limit));
+        return x;
+    };
+
+    placeRandomly(iteration = 0)
+    {
+        const myShips = Object.values(this.ships);
+        if(iteration >= myShips.length)
+        {
+            return
+        }
+        try{
+            const booleanArray = [true, false];
+            let x = this.randomNumber(10);
+            let y = this.randomNumber(10);
+            let booleanIndex = this.randomNumber(2);
+            this.gameBoard.place(x, y, myShips[iteration], booleanArray[booleanIndex]);
+            return this.placeRandomly(iteration + 1);
+        }
+        catch(e)
+        {
+            return this.placeRandomly(iteration);
+        };
+        
+        
+    };
 };
 
 class computer extends player
@@ -27,8 +56,8 @@ class computer extends player
     };
 
     fire (gameBoard){
-        let x = this.#randomNumber();
-        let y = this.#randomNumber();
+        let x = this.randomNumber(10);
+        let y = this.randomNumber(10);
         try{
             gameBoard.receiveAttack(x,y);
             return [x, y];
@@ -39,11 +68,6 @@ class computer extends player
         };
     };
     
-    #randomNumber()
-    {
-        let x = Math.floor((Math.random() * 10));
-        return x;
-    };
 };
 
 export {player,
