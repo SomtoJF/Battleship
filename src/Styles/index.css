@@ -114,7 +114,7 @@ body {
 }
 
 .column:hover {
-  background-color: green;
+  background-color: lime;
 }
 
 @media all and (max-width: 950px) {
