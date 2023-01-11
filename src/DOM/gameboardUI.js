@@ -27,4 +27,17 @@ function getUIArray(boardElement)
     return array;
 };
 
-export { renderGameBoardShips, getUIArray };
+function displayShots(twoElementArray, destinationBoard, destinationBoardUI)
+{
+    let x = twoElementArray[0];
+    let y = twoElementArray[1];
+    if(destinationBoard[x][y] !== undefined)
+    {
+        destinationBoardUI[x][y].style.backgroundColor = 'pink';
+    }
+    else{
+        destinationBoardUI[x][y].style.backgroundColor = 'lime';
+    };
+};
+
+export { renderGameBoardShips, getUIArray, displayShots };
