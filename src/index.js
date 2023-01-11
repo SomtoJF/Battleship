@@ -1,6 +1,6 @@
 import './Styles/index.css';
 import { player, computer } from './Objects/players';
-import { renderGameBoardShips, getUIArray } from './DOM/gameboardUI';
+import { renderGameBoardShips, getUIArray, displayShots } from './DOM/gameboardUI';
 
 const PLAYER = new player();
 const PLAYER_BOARD = PLAYER.gameBoard;
@@ -18,10 +18,26 @@ const COMPUTER_CARRIER = COMPUTER.ships.Carrier;
 const COMPUTER_PATROL_BOAT = COMPUTER.ships.PatrolBoat;
 const COMPUTER_BATTLESHIP = COMPUTER.ships.Battleship;
 
-// PLAYER_BOARD.place(0,0,PLAYER_CARRIER, false);
-// PLAYER_BOARD.place(7,0,PLAYER_PATROL_BOAT);
-// PLAYER_BOARD.place(6,5,PLAYER_DESTROYER, false);
-// COMPUTER_BOARD.place(0,0,PLAYER_CARRIER, false);
+PLAYER.placeRandomly();
+COMPUTER.placeRandomly();
+
+COMPUTER_BOARD_UI.forEach((element, index)=>{
+    let x = index;
+    element.forEach((element, index)=>
+    {
+        let y = index;
+        element.addEventListener('click', ()=>{
+            PLAYER.fire(x, y, COMPUTER_BOARD);
+            // display player shots on screen
+            displayShots([x, y], COMPUTER_BOARD.board, COMPUTER_BOARD_UI);
+            COMPUTER_BOARD.board[x][y] != undefined? COMPUTER_BOARD_UI[x][y].appendChild(document.createElement('div')): null;
+
+            const firedCoords = COMPUTER.fire(PLAYER_BOARD);
+            // display computer shots on screen
+            displayShots(firedCoords, PLAYER_BOARD.board, PLAYER_BOARD_UI);
+        });
+    });
+});
+
+renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
 // renderGameBoardShips(COMPUTER_BOARD.board, COMPUTER_BOARD_UI);
-// renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
-// console.log(PLAYER_BOARD_UI);
