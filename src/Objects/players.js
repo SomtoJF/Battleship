@@ -64,7 +64,7 @@ class computer extends player
         }
         catch(e)
         {
-            this.fire(gameBoard);
+            return this.fire(gameBoard);
         };
     };
     
