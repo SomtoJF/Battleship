@@ -1,14 +1,10 @@
 import './Styles/index.css';
 import { player, computer } from './Objects/players';
-import { renderGameBoardShips, getUIArray, displayShots } from './DOM/gameboardUI';
+import { renderGameBoardShips, getUIArray, displayShots, clearBoardUI } from './DOM/gameboardUI';
 
 const messageDiv = document.getElementById('message');
 const messageContainer = document.getElementById('messageContainer');
 const messageButton = document.getElementById('messageButton');
-
-messageButton.addEventListener('click', ()=>{
-    messageContainer.style.display = 'none';
-});
 
 const PLAYER = new player();
 const PLAYER_BOARD = PLAYER.gameBoard;
@@ -29,6 +25,11 @@ const COMPUTER_BATTLESHIP = COMPUTER.ships.Battleship;
 PLAYER.placeRandomly();
 COMPUTER.placeRandomly();
 
+
+messageButton.addEventListener('click', ()=>{
+    location.reload();
+});
+
 COMPUTER_BOARD_UI.forEach((element, index)=>{
     let x = index;
     element.forEach((element, index)=>
@@ -44,11 +45,6 @@ COMPUTER_BOARD_UI.forEach((element, index)=>{
             if(computerShipsSunk == true){
                 messageContainer.style.display = 'flex';
                 messageDiv.textContent = 'Player wins';
-                PLAYER_BOARD.clear();
-                COMPUTER_BOARD.clear();
-                PLAYER.placeRandomly();
-                COMPUTER.placeRandomly();
-                renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
             };
 
             const firedCoords = COMPUTER.fire(PLAYER_BOARD);
@@ -57,12 +53,7 @@ COMPUTER_BOARD_UI.forEach((element, index)=>{
             let playerShipsSunk = PLAYER_BOARD.allShipsSunk();
             if(playerShipsSunk == true){
                 messageContainer.style.display = 'flex';
-                messageDiv.textContent = 'Computer wins';
-                PLAYER_BOARD.clear();
-                COMPUTER_BOARD.clear();
-                PLAYER.placeRandomly();
-                COMPUTER.placeRandomly();
-                renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
+                messageDiv.textContent = 'Computer wins';              
             };
         });
     });
