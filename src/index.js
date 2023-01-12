@@ -2,6 +2,14 @@ import './Styles/index.css';
 import { player, computer } from './Objects/players';
 import { renderGameBoardShips, getUIArray, displayShots } from './DOM/gameboardUI';
 
+const messageDiv = document.getElementById('message');
+const messageContainer = document.getElementById('messageContainer');
+const messageButton = document.getElementById('messageButton');
+
+messageButton.addEventListener('click', ()=>{
+    messageContainer.style.display = 'none';
+});
+
 const PLAYER = new player();
 const PLAYER_BOARD = PLAYER.gameBoard;
 const PLAYER_BOARD_UI = getUIArray(document.getElementById('playerBoard'));
@@ -31,10 +39,31 @@ COMPUTER_BOARD_UI.forEach((element, index)=>{
             // display player shots on screen
             displayShots([x, y], COMPUTER_BOARD.board, COMPUTER_BOARD_UI);
             COMPUTER_BOARD.board[x][y] != undefined? COMPUTER_BOARD_UI[x][y].appendChild(document.createElement('div')): null;
+            // check if all pc ships are sunk
+            let computerShipsSunk = COMPUTER_BOARD.allShipsSunk();
+            if(computerShipsSunk == true){
+                messageContainer.style.display = 'flex';
+                messageDiv.textContent = 'Player wins';
+                PLAYER_BOARD.clear();
+                COMPUTER_BOARD.clear();
+                PLAYER.placeRandomly();
+                COMPUTER.placeRandomly();
+                renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
+            };
 
             const firedCoords = COMPUTER.fire(PLAYER_BOARD);
             // display computer shots on screen
             displayShots(firedCoords, PLAYER_BOARD.board, PLAYER_BOARD_UI);
+            let playerShipsSunk = PLAYER_BOARD.allShipsSunk();
+            if(playerShipsSunk == true){
+                messageContainer.style.display = 'flex';
+                messageDiv.textContent = 'Computer wins';
+                PLAYER_BOARD.clear();
+                COMPUTER_BOARD.clear();
+                PLAYER.placeRandomly();
+                COMPUTER.placeRandomly();
+                renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
+            };
         });
     });
 });
