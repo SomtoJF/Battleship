@@ -36,6 +36,7 @@ class player {
             let x = this.randomNumber(10);
             let y = this.randomNumber(10);
             let booleanIndex = this.randomNumber(2);
+            myShips[iteration].damageCount = 0;
             this.gameBoard.place(x, y, myShips[iteration], booleanArray[booleanIndex]);
             return this.placeRandomly(iteration + 1);
         }
