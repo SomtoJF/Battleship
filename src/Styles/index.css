@@ -98,6 +98,38 @@ body {
   background-repeat: no-repeat;
 }
 
+#title a:hover {
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+  0%,
+  100% {
+    transform: translateX(0%);
+    transform-origin: 50% 50%;
+  }
+
+  15% {
+    transform: translateX(-10px) rotate(-6deg);
+  }
+
+  30% {
+    transform: translateX(5px) rotate(6deg);
+  }
+
+  45% {
+    transform: translateX(-5px) rotate(-3.6deg);
+  }
+
+  60% {
+    transform: translateX(3px) rotate(2.4deg);
+  }
+
+  75% {
+    transform: translateX(-2px) rotate(-1.2deg);
+  }
+}
+
 .section {
   width: 50%;
   height: 100%;
@@ -145,10 +177,10 @@ body {
 }
 
 .column > div {
-  height: 50%;
-  width: 50%;
+  height: 70%;
+  width: 70%;
   background-color: #e9dcc9;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .column:hover {
