@@ -5,6 +5,8 @@ import { renderGameBoardShips, getUIArray, displayShots, clearBoardUI } from './
 const messageDiv = document.getElementById('message');
 const messageContainer = document.getElementById('messageContainer');
 const messageButton = document.getElementById('messageButton');
+const replaceButton = document.getElementById('autoPlace');
+const outcomeContainer = document.getElementById('outcomes');
 
 const PLAYER = new player();
 const PLAYER_BOARD = PLAYER.gameBoard;
@@ -27,7 +29,18 @@ COMPUTER.placeRandomly();
 
 
 messageButton.addEventListener('click', ()=>{
-    location.reload();
+    messageContainer.style.display = 'none';
+    outcomeContainer.style.display = 'none';
+});
+
+replaceButton.addEventListener('click', ()=>{
+    PLAYER.gameBoard.clear();
+    COMPUTER.gameBoard.clear();
+    clearBoardUI(PLAYER_BOARD_UI);
+    clearBoardUI(COMPUTER_BOARD_UI);
+    PLAYER.placeRandomly();
+    COMPUTER.placeRandomly();
+    renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
 });
 
 COMPUTER_BOARD_UI.forEach((element, index)=>{
@@ -60,4 +73,6 @@ COMPUTER_BOARD_UI.forEach((element, index)=>{
 });
 
 renderGameBoardShips(PLAYER_BOARD.board, PLAYER_BOARD_UI);
-// renderGameBoardShips(COMPUTER_BOARD.board, COMPUTER_BOARD_UI);
+export{
+    COMPUTER_BOARD_UI, PLAYER_BOARD_UI
+}
