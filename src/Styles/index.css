@@ -46,7 +46,7 @@ body {
 #messageContainer {
   --width: max(30%, 250px);
   box-sizing: border-box;
-  display: none;
+  display: flex;
   position: fixed;
   width: var(--width);
   height: 30vh;
@@ -61,24 +61,71 @@ body {
   background-color: white;
   z-index: 1;
   box-shadow: 0px 0px 15px black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 #message {
-  font-size: 2rem;
   font-weight: 600;
-  color: gray;
+  color: lime;
+  margin: 0px;
 }
 
-#messageContainer > button {
+#outcomes {
+  height: 30%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#outcomes > * {
+  display: block;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  color: #7393b3;
+}
+
+#outcomes > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#outcomes > div > div {
+  height: 25px;
+  width: 25px;
   border-radius: 5px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  border: none;
-  align-self: flex-end;
-  width: 20%;
-  height: 15%;
-  font-weight: 700;
-  background-color: lightgray;
+  /* background-color: transparent; */
+}
+
+.miss {
+  background-color: aqua;
+}
+
+.hit {
+  background-color: red;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 5%;
+}
+
+#buttons > button {
+  border: solid 1px #7393b3;
+  color: #7393b3;
+  background-color: white;
+  border-radius: 2px;
+}
+
+#buttons > button:hover {
+  color: white;
+  background-color: #7393b3;
 }
 
 #title * {
