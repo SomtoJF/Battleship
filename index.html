@@ -12,8 +12,19 @@
     <div id="background">
         <h1 id="title"><p>Battleship</p> <a href="https://github.com/SomtoJF/Battleship" target="_blank"></a></h1>
         <div id="messageContainer">
-            <p id="message"></p>
-            <button type="button" id="messageButton">OK</button>
+            <p id="message">
+                Sink all enemy ships to win!
+            </p>
+            <div id="outcomes">
+                <span>Hit</span>
+                <span>Miss</span>
+                <div><div class="hit"></div></div>
+                <div><div class="miss"></div></div>
+            </div>
+            <div id="buttons">
+                <button type="button" id="messageButton">OK</button>
+                <button type="button" id="autoPlace">Auto place</button>
+            </div>
         </div>
         <div class="section player">
             <p>player</p>
