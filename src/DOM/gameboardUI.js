@@ -33,10 +33,10 @@ function displayShots(twoElementArray, destinationBoard, destinationBoardUI)
     let y = twoElementArray[1];
     if(destinationBoard[x][y] !== undefined)
     {
-        destinationBoardUI[x][y].style.backgroundColor = 'pink';
+        destinationBoardUI[x][y].style.backgroundColor = 'red';
     }
     else{
-        destinationBoardUI[x][y].style.backgroundColor = 'lime';
+        destinationBoardUI[x][y].style.backgroundColor = '#00FFFF';
     };
 };
 
