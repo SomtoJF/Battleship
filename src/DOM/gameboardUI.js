@@ -40,4 +40,17 @@ function displayShots(twoElementArray, destinationBoard, destinationBoardUI)
     };
 };
 
-export { renderGameBoardShips, getUIArray, displayShots };
+function clearBoardUI(boardUI)
+{
+    for(let i = 0; i < boardUI.length; i++)
+    {
+        for(let j = 0; j < boardUI[i].length; j++)
+        {
+            let element = boardUI[i][j];
+            element.innerHTML = '';
+            element.style.backgroundColor = 'transparent';
+        };
+    };
+};
+
+export { renderGameBoardShips, getUIArray, displayShots, clearBoardUI };
